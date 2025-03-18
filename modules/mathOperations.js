@@ -1,6 +1,6 @@
 import { ERROR, ERROR_INPUT } from './constants.js';
 import { updateDisplay } from './display.js';
-// import { addToHistory } from './history.js';
+import { addToHistory } from './history.js';
 
 export function equals(calculator) {
   try {
@@ -14,8 +14,8 @@ export function equals(calculator) {
     let result = eval(calculator.inputStr);
     result = parseFloat(result.toFixed(3));
 
-    // Add to history
-    // addToHistory(calculator, expressionToShow, result);
+    
+    addToHistory(calculator, expressionToShow, result);
 
     calculator.inputStr = result.toString();
     calculator.displayStr = calculator.inputStr;

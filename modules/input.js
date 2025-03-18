@@ -6,7 +6,7 @@ import {
 } from './mathOperations.js';
 import { handleMemoryClick } from './memory.js';
 import { degreeClickEventHandler, changeMode,toggleExponential } from './ui.js';
-// import { toggleHistoryDisplay, clearHistory } from './history.js';
+import { toggleHistoryDisplay, clearHistory } from './history.js';
 
 export function initInputHandlers(calculator) {
   const boundKeyClick = keyClickEventHandler.bind(null, calculator);
@@ -35,15 +35,15 @@ export function initInputHandlers(calculator) {
   document.querySelector(".toggle-btn").addEventListener("click", boundDegreeClick);
   
   
-  // const historyBtn = document.querySelector(".history-toggle-btn");
-  // if (historyBtn) {
-  //   historyBtn.addEventListener("click", () => toggleHistoryDisplay(calculator));
-  // }
+  const historyBtn = document.querySelector(".history-toggle-btn");
+  if (historyBtn) {
+    historyBtn.addEventListener("click", () => toggleHistoryDisplay(calculator));
+  }
   
-  // const clearHistoryBtn = document.querySelector(".clear-history-btn");
-  // if (clearHistoryBtn) {
-  //   clearHistoryBtn.addEventListener("click", () => clearHistory(calculator));
-  // }
+  const clearHistoryBtn = document.querySelector(".clear-history-btn");
+  if (clearHistoryBtn) {
+    clearHistoryBtn.addEventListener("click", () => clearHistory(calculator));
+  }
 }
 
 export function keyClickEventHandler(calculator, e) {
