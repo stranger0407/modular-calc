@@ -1,7 +1,7 @@
 import { ERROR, ERROR_INPUT, MAX_HISTORY_LENGTH } from './constants.js';
 import { updateDisplay } from './display.js';
 import { initInputHandlers } from './input.js';
-// import { initMemory, updateMemoryButtons } from './memory.js';
+import { initMemory, updateMemoryButtons } from './memory.js';
 // import { initHistory } from './history.js';
 export class ScientificCalculator {
   constructor() {
@@ -17,10 +17,10 @@ export class ScientificCalculator {
     this.display = document.querySelector(".result");
 
    
-    // initMemory(this);
+    initMemory(this);
     // initHistory(this);
     updateDisplay(this);
-    // updateMemoryButtons(this);
+    updateMemoryButtons(this);
     initInputHandlers(this);
    
   }
