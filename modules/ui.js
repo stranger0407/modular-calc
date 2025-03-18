@@ -1,10 +1,4 @@
-
 import { updateDisplay } from './display.js';
-
-
-// export function initUIHandlers(calculator) {
- 
-// }
 
 export function changeMode(calculator) {
   calculator.isSecondFunction = !calculator.isSecondFunction;

@@ -1,70 +1,70 @@
-import { updateDisplay } from './display.js';
-import { ERROR } from './constants.js';
+// import { updateDisplay } from './display.js';
+// import { ERROR } from './constants.js';
 
-export function initMemory(calculator) {
-  loadMemoryFromStorage(calculator);
-}
+// export function initMemory(calculator) {
+//   loadMemoryFromStorage(calculator);
+// }
 
-export function loadMemoryFromStorage(calculator) {
-  const savedMemory = localStorage.getItem("calculatorMemory");
-  calculator.memory = savedMemory ? parseFloat(savedMemory) : null;
-}
+// export function loadMemoryFromStorage(calculator) {
+//   const savedMemory = localStorage.getItem("calculatorMemory");
+//   calculator.memory = savedMemory ? parseFloat(savedMemory) : null;
+// }
 
-export function saveMemoryToStorage(calculator) {
-  if (calculator.memory !== null) {
-    localStorage.setItem("calculatorMemory", calculator.memory.toString());
-  } else {
-    localStorage.removeItem("calculatorMemory");
-  }
-}
+// export function saveMemoryToStorage(calculator) {
+//   if (calculator.memory !== null) {
+//     localStorage.setItem("calculatorMemory", calculator.memory.toString());
+//   } else {
+//     localStorage.removeItem("calculatorMemory");
+//   }
+// }
 
-export function updateMemoryButtons(calculator) {
-  const hasMemory = calculator.memory !== null;
-  const mcButton = document.querySelector('[value="MC"]');
-  const mrButton = document.querySelector('[value="MR"]');
+// export function updateMemoryButtons(calculator) {
+//   const hasMemory = calculator.memory !== null;
+//   const mcButton = document.querySelector('[value="MC"]');
+//   const mrButton = document.querySelector('[value="MR"]');
 
-  if (mcButton) mcButton.classList.toggle("fade-color", !hasMemory);
-  if (mrButton) mrButton.classList.toggle("fade-color", !hasMemory);
-}
+//   if (mcButton) mcButton.classList.toggle("fade-color", !hasMemory);
+//   if (mrButton) mrButton.classList.toggle("fade-color", !hasMemory);
+// }
 
-export function handleMemoryClick(calculator, e) {
-  const button = e.target.closest("button");
-  if (!button) return;
+// export function handleMemoryClick(calculator, e) {
+//   const button = e.target.closest("button");
+//   if (!button) return;
 
-  const action = button.textContent.trim();
-  let currentValue = 0;
+//   const action = button.textContent.trim();
+//   let currentValue = 0;
 
-  try {
-    if (calculator.inputStr && calculator.inputStr !== ERROR) {
-      currentValue = new Function(`return (${calculator.inputStr})`)();
-    }
-  } catch (error) {
-    console.error("Error evaluating expression:", error);
-    return;
-  }
+//   try {
+//     if (calculator.inputStr && calculator.inputStr !== ERROR) {
+//       currentValue = new Function(`return (${calculator.inputStr})`)();
+//     }
+//   } catch (error) {
+//     console.error("Error evaluating expression:", error);
+//     return;
+//   }
 
-  switch (action) {
-    case "MC": // Memory Clear
-      calculator.memory = null;
-      break;
-    case "MR": // Memory Recall
-      if (calculator.memory !== null) {
-        calculator.inputStr = calculator.memory.toString();
-        calculator.displayStr = calculator.inputStr;
-      }
-      break;
-    case "M+": // Memory Add
-      calculator.memory = (calculator.memory || 0) + currentValue;
-      break;
-    case "M-": // Memory Subtract
-      calculator.memory = (calculator.memory || 0) - currentValue;
-      break;
-    case "MS": // Memory Store
-      calculator.memory = currentValue;
-      break;
-  }
+//   switch (action) {
+//     case "MC": // Memory Clear
+//       calculator.memory = null;
+//       break;
+//     case "MR": // Memory Recall
+//       if (calculator.memory !== null) {
+//         calculator.inputStr = calculator.memory.toString();
+//         calculator.displayStr = calculator.inputStr;
+//       }
+//       break;
+//     case "M+": // Memory Add
+//       calculator.memory = (calculator.memory || 0) + currentValue;
+//       break;
+//     case "M-": // Memory Subtract
+//       calculator.memory = (calculator.memory || 0) - currentValue;
+//       break;
+//     case "MS": // Memory Store
+//       calculator.memory = currentValue;
+//       break;
+//   }
 
-  saveMemoryToStorage(calculator);
-  updateMemoryButtons(calculator);
-  updateDisplay(calculator);
-}
+//   saveMemoryToStorage(calculator);
+//   updateMemoryButtons(calculator);
+//   updateDisplay(calculator);
+// }
